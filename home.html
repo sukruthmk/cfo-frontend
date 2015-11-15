@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CFO - Chat</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <style>
+            body{padding-top:40px;padding-bottom:40px;background-color:#eee}.form-signin{max-width:330px;padding:15px;margin:0 auto}.form-signin .form-signin-heading,.form-signin .checkbox{margin-bottom:10px}.form-signin .checkbox{font-weight:normal}.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px}.form-signin .form-control:focus{z-index:2}.form-signin input[type="email"]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0}.form-signin input[type="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0}
+        </style>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+        <link rel="stylesheet" href="css/style.css">
+          <link rel="stylesheet" href="css/login_style.css">
+
+    </head>
+    <body>
+    <header>
+    <div class="row" align="center">
+    <a href="index.html"><img src="img/logo.png" alt=""  /></a>
+
+    </div>
+   <div class="row" align="center">
+    <a href="index.html"><img src="img/cfo.png" alt=""  /></a>
+
+<ul style="padding-right=180px">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="margin-right: -135px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cog"></i> settings <span class="caret"></span></a>
+                  <ul class="dropdown-menu" style="margin-left: 33%">
+                    <li class="manage-users"><a href="user.html"><i class="fa fa-users"> Manage Users</i></a></li>
+                    <li><a href="index.html"><i class="fa fa-sign-out"></i> Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+    </div>
+
+</header>
+
+    <div class="container clearfix maincontainer">
+           <div class="chat">
+             <div class="chat-header clearfix">
+               <!-- <img src="front/img/company_logo.png" alt="avatar" />
+
+               <div class="chat-about">
+                 <div class="chat-with">Chat with Vincent Porter</div>
+               </div>
+               <i class="fa fa-star"></i> -->
+               <h1 align="center"><strong><i class="fa fa-home"></i>:</strong> Qwinix Technologies</h1>
+               <div align="center" class="chat-num-messages"><i class="fa fa-users"></i>: 53 users <i class="fa fa-envelope"></i>: 1022 messages</div>
+             </div>
+             <div class="chat-history">
+               <ul>
+               </ul>
+             </div> <!-- end chat-history -->
+
+             <div class="chat-message clearfix">
+                <form class="message-form">
+                   <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3" required="true"></textarea>
+
+                   <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+                   <i class="fa fa-file-image-o"></i>
+
+                   <button class="send-button" type="submit">Send</button>
+                </form>
+
+             </div> <!-- end chat-message -->
+
+           </div> <!-- end chat -->
+
+         </div> <!-- end container -->
+
+       <script id="message-template" type="text/x-handlebars-template">
+         <li class="clearfix" style="width: 100%" class="message-{{id}}">
+           <div class="message-data align-right">
+             <span class="message-data-time" >{{date}}</span> &nbsp; &nbsp;
+             <span class="message-data-name" >{{name}}</span> <i class="fa fa-circle me"></i>
+           </div>
+           <div class="message other-message float-right" >
+                {{message}}
+           </div>
+         </li>
+       </script>
+
+       <script id="message-response-template" type="text/x-handlebars-template">
+         <li style="width: 100%" class="message-{{id}}">
+           <div class="message-data">
+             <span class="message-data-name"><i class="fa fa-circle online"></i> {{name}} </span>
+             <span class="message-data-time">{{date}}</span>
+           </div>
+           <div class="message my-message">
+             {{message}}
+           </div>
+         </li>
+       </script>
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
+    </body>
+</html>
+<script>
+    
+    var url = "https://powerful-lowlands-6504.herokuapp.com/public";
+    jQuery(document).ready(function(){
+        var token = localStorage.getItem("token");
+        var chatElement = jQuery('.chat-history ul');
+        var source = $("#message-response-template").html();
+        var template = Handlebars.compile(source);
+        var source =  $("#message-template").html();
+        var template2 = Handlebars.compile(source);
+        var maxId = false;
+        var userData = false;
+        $.ajax({
+          method: "GET",
+          url: url+"/user/info",
+          data: { token: token},
+          error: function() { window.location.href = 'index.html'; }
+        }).done(function(result) {
+            if(result) {
+                userData = result;
+                init();
+            }
+        });
+        var init = function() {
+            jQuery('.user-name').text(userData.name);
+            if(userData.admin != 1) {
+                jQuery('.manage-users').addClass('hide');
+            }
+            $.ajax({
+              method: "GET",
+              url: url+"/api/posts",
+              data: { token: token}
+            }).done(function(result) {
+                if(result) {
+                    jQuery.each(result, function(key, data) {
+                        var date = data.created_at;
+                        // var moment = moment(date);
+                        // var formatedDate = moment.format("MMMM Do, h:mm a");
+                        var context = {name: data.user.name, date: date, message: data.message, id: data.id};
+                        if(data.user.id == userData.id) {
+                            var html = template2(context);
+                        } else {
+                            var html = template(context);
+                        }
+                        chatElement.append(html);
+                        maxId = data.id;
+                    });
+                    $(".chat-history").animate({ scrollTop: $('.chat-history').prop("scrollHeight")}, 1000);
+                }
+            });
+            var messageForm = jQuery('.message-form');
+            messageForm.submit(function(e){
+                e.preventDefault();
+                var messageElement = messageForm.find('#message-to-send');
+                var message = messageElement.val();
+                $.ajax({
+                  method: "POST",
+                  url: url+"/api/post?token="+token,
+                  data: {message: message}
+                }).done(function(result) {
+                    messageElement.val("");
+                    if(result) {
+                        jQuery.each(result, function(key, data) {
+                            var date = data.created_at;
+                            var context = {name: data.user.name, date: date, message: data.message, id: data.id};
+                            if(data.user.id == userData.id) {
+                                var html = template2(context);
+                            } else {
+                                var html = template(context);
+                            }
+                            chatElement.append(html);
+                            maxId = data.id;
+                        });
+                        $(".chat-history").animate({ scrollTop: $('.chat-history').prop("scrollHeight")}, 1000);
+                    }
+                });
+            });
+            setInterval(function(){
+                if(maxId != false) {
+                    $.ajax({
+                      method: "GET",
+                      url: url+"/api/posts",
+                      data: { token: token, maxid: maxId}
+                    }).done(function(result) {
+                        if(result.length) {
+                            jQuery.each(result, function(key, data) {
+                                var date = data.created_at;
+                                // var moment = moment(date);
+                                // var formatedDate = moment.format("MMMM Do, h:mm a");
+                                if(jQuery('.message-'+data.id).length == 0) {
+                                    var context = {name: data.user.name, date: date, message: data.message, data: data.id};
+                                    if(data.user.id == userData.id) {
+                                        var html = template2(context);
+                                    } else {
+                                        var html = template(context);
+                                    }
+                                    chatElement.append(html);
+                                }
+                                maxId = data.id;
+                            });
+                            $(".chat-history").animate({ scrollTop: $('.chat-history').prop("scrollHeight")}, 1000);
+                        }
+                    });
+                }
+            }, 3000);
+        }
+    });
+jQuery('textarea').keydown(function(event) {
+        if (event.keyCode == 13) {
+
+            this.form.submit();
+            return false;
+         }
+    });
+</script>

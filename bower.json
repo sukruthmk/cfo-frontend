@@ -1,0 +1,26 @@
+{
+  "name": "cfo",
+  "authors": [
+    "sukruthmk <suk_mallur@yahoo.co.in>"
+  ],
+  "description": "A simple app for sharing confessions",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "cfo"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "moment": "~2.10.6"
+  }
+}
