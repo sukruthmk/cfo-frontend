@@ -104,10 +104,10 @@
                 var user_name = $('#user_name').val();
                 $.ajax({
                   method: "POST",
-                  url: url+"/user/"+userData.id,
+                  url: url+"/user/"+userData.id+"?token="+token,
                   data: { name: name, user_name: user_name}
                 }).done(function(data) {
-                    window.location.href = "home.html";
+                    window.location.reload();
                 });
             });
         }
